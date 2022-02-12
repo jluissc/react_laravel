@@ -22,6 +22,7 @@ class Example extends Component {
         this.handleSubmit = this.handleSubmit.bind(this)
     }
 
+    /* Cargar los datos en la carga */
     async componentDidMount(){
         try {
             let res = await fetch(URL+'wallet');
@@ -38,37 +39,44 @@ class Example extends Component {
     }
     
     async handleSubmit(e){
-        e.preventDefault()
-        console.log('enviando.....')
-
-        try {
-            let config = {
-                method : 'POST',
-                headers : {
-                    'Accept' : 'application/json',
-                    'Content-Type' : 'application/json',
-                },
-                body : JSON.stringify(this.state.form),
-            }
-            let res = await fetch(URL+'transfer', config);
-            let data = await res.json();
-
-            console.log(data)
-
-            this.setState({
-                transfers : this.state.transfers.concat(data),
-                money : this.state.money + (parseInt(data.amount)),
-            })
-        } catch (error) {
-            this.setState({
-                error  
-            });
-        }
+        e.preventDefault();
+         
+        console.log('enviando.....');
+        if(this.state.form.description !== ''){
+            if(this.state.form.amount !== ''){
+                try {
+                    let config = {
+                        method : 'POST',
+                        headers : {
+                            'Accept' : 'application/json',
+                            'Content-Type' : 'application/json',
+                        },
+                        body : JSON.stringify(this.state.form),
+                    }
+                    let res = await fetch(URL+'transfer', config);
+                    let data = await res.json();
+                    this.setState({
+                        transfers : this.state.transfers.concat(data),
+                        money : this.state.money + (parseInt(data.amount)),
+                    })
+                    this.setState({
+                        form : {
+                            description : '',
+                            amount : ''
+                        }
+                    })
+                } catch (error) {
+                    this.setState({
+                        error  
+                    });
+                }
+            }else console.log('Amount empty')
+        }else console.log('Description empty')
+        
         
     }
 
     handleChange(e){
-        console.log(e.target.value)
         this.setState({
             form : {
                 ...this.state.form,
@@ -81,7 +89,7 @@ class Example extends Component {
         return (
             <div className="max-w-sm rounded overflow-hidden shadow-lg">
                 <div className="px-6 py-4">
-                    <div className="font-bold text-xl mb-2">
+                    <div className="font-medium font-serif text-3xl text-center">
                         <p>S/. {this.state.money}</p>
                     </div>
                     <Form form={this.state.form} onChange={this.handleChange} onSubmit={this.handleSubmit}/>
