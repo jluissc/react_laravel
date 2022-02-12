@@ -1,4 +1,4 @@
-##Corre las migraciones
+## Corre las migraciones
 
 php artisan migrate
 
@@ -6,7 +6,7 @@ php artisan migrate
 
 php artisan db:seed
 
-##Instala npm
+## Instala npm
 
 npm install
 npm run dev
