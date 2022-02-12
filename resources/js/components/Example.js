@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import Form from './Form';
 import Lists from './Lists';
 import URL from '../url';
+import alert from '../alertas';
 class Example extends Component {
 
     constructor(props){
@@ -65,13 +66,15 @@ class Example extends Component {
                             amount : ''
                         }
                     })
+                    alert('success','Saved correctly')
                 } catch (error) {
                     this.setState({
                         error  
                     });
+                    // alert('error','Error ')
                 }
-            }else console.log('Amount empty')
-        }else console.log('Description empty')
+            }else alert('error','Shouldn´t amount not be empty')
+        }else alert('error','Shouldn´t description not be empty')
         
         
     }
