@@ -19,7 +19,7 @@ class TransferFactory extends Factory
         return [
             'description' => $this->faker->text(200),
             'amount' => $this->faker->numberBetween(10,90),
-            'wallet_id' => $this->faker->numberBetween(1,10),
+            'wallet_id' => $this->faker->numberBetween(1,2),
         ];
     }
 }
