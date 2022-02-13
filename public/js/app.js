@@ -5606,12 +5606,12 @@ var Example = /*#__PURE__*/function (_Component) {
                 console.log('enviando.....');
 
                 if (!(this.state.form.description !== '')) {
-                  _context2.next = 25;
+                  _context2.next = 26;
                   break;
                 }
 
                 if (!(this.state.form.amount !== '')) {
-                  _context2.next = 22;
+                  _context2.next = 23;
                   break;
                 }
 
@@ -5624,15 +5624,16 @@ var Example = /*#__PURE__*/function (_Component) {
                   },
                   body: JSON.stringify(this.state.form)
                 };
-                _context2.next = 8;
+                console.log(config.body);
+                _context2.next = 9;
                 return fetch(_url__WEBPACK_IMPORTED_MODULE_5__["default"] + 'transfer', config);
 
-              case 8:
+              case 9:
                 res = _context2.sent;
-                _context2.next = 11;
+                _context2.next = 12;
                 return res.json();
 
-              case 11:
+              case 12:
                 data = _context2.sent;
                 this.setState({
                   transfers: this.state.transfers.concat(data),
@@ -5641,40 +5642,41 @@ var Example = /*#__PURE__*/function (_Component) {
                 this.setState({
                   form: {
                     description: '',
-                    amount: ''
+                    amount: '',
+                    wallet_id: 1
                   }
                 });
                 (0,_alertas__WEBPACK_IMPORTED_MODULE_6__["default"])('success', 'Saved correctly');
-                _context2.next = 20;
+                _context2.next = 21;
                 break;
 
-              case 17:
-                _context2.prev = 17;
+              case 18:
+                _context2.prev = 18;
                 _context2.t0 = _context2["catch"](4);
                 this.setState({
                   error: _context2.t0
                 }); // alert('error','Error ')
 
-              case 20:
-                _context2.next = 23;
+              case 21:
+                _context2.next = 24;
                 break;
-
-              case 22:
-                (0,_alertas__WEBPACK_IMPORTED_MODULE_6__["default"])('error', 'Shouldn´t amount not be empty');
 
               case 23:
-                _context2.next = 26;
+                (0,_alertas__WEBPACK_IMPORTED_MODULE_6__["default"])('error', 'Shouldn´t amount not be empty');
+
+              case 24:
+                _context2.next = 27;
                 break;
 
-              case 25:
+              case 26:
                 (0,_alertas__WEBPACK_IMPORTED_MODULE_6__["default"])('error', 'Shouldn´t description not be empty');
 
-              case 26:
+              case 27:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2, this, [[4, 17]]);
+        }, _callee2, this, [[4, 18]]);
       }));
 
       function handleSubmit(_x) {
@@ -5709,8 +5711,31 @@ var Example = /*#__PURE__*/function (_Component) {
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
           className: "px-6 pt-4 pb-2",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Lists__WEBPACK_IMPORTED_MODULE_4__["default"], {
-            transfers: this.state.transfers
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+            className: "col-span-12",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("div", {
+              className: "overflow-auto lg:overflow-visible ",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("table", {
+                className: "table text-gray-400 border-separate space-y-6 text-sm",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("thead", {
+                  className: "bg-gray-800 text-gray-500",
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("tr", {
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("th", {
+                      className: "p-3",
+                      children: "Description"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("th", {
+                      className: "p-3 text-left",
+                      children: "Amount"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)("th", {
+                      className: "p-3 text-left",
+                      children: "Action"
+                    })]
+                  })
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Lists__WEBPACK_IMPORTED_MODULE_4__["default"], {
+                  transfers: this.state.transfers
+                })]
+              })
+            })
           })
         })]
       });
@@ -5762,7 +5787,7 @@ var Form = function Form(_ref) {
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
             className: "flex items-center leading-normal bg-grey-lighter border-1 rounded-r-none border border-r-0 border-blue-300 px-3 whitespace-no-wrap text-grey-dark text-sm w-12 h-10 bg-blue-300 justify-center items-center  text-xl rounded-lg text-white",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("i", {
-              "class": "fa-solid fa-pen-clip"
+              className: "fa-solid fa-pen-clip"
             })
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
@@ -5783,7 +5808,7 @@ var Form = function Form(_ref) {
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
             className: "flex items-center leading-normal bg-grey-lighter border-1 rounded-r-none border border-r-0 border-blue-300 px-3 whitespace-no-wrap text-grey-dark text-sm w-12 h-10 bg-blue-300 justify-center items-center  text-xl rounded-lg text-white",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("i", {
-              "class": "fa-solid fa-money-bill"
+              className: "fa-solid fa-money-bill"
             })
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
@@ -5792,8 +5817,7 @@ var Form = function Form(_ref) {
           placeholder: "Amount",
           name: "amount",
           value: form.amount,
-          onChange: onChange,
-          min: "1"
+          onChange: onChange
         })]
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
         type: "submit",
@@ -5827,92 +5851,47 @@ __webpack_require__.r(__webpack_exports__);
 
 var Transfers = function Transfers(_ref) {
   var transfers = _ref.transfers;
-  console.log(transfers);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-    "class": "col-span-12",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-      "class": "overflow-auto lg:overflow-visible ",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("table", {
-        "class": "table text-gray-400 border-separate space-y-6 text-sm",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("thead", {
-          "class": "bg-gray-800 text-gray-500",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-              "class": "p-3",
-              children: "Description"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-              "class": "p-3 text-left",
-              children: "Amount"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-              "class": "p-3 text-left",
-              children: "Action"
-            })]
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("tbody", {
+    children: transfers.map(function (transfer, index) {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
+        className: "bg-gray-800",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
+          className: "p-3",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+            className: "flex align-items-center",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+              className: "ml-3",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+                className: "",
+                children: transfer.description
+              })
+            })
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("tbody", {
-          children: transfers.map(function (transfer) {
-            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
-              "class": "bg-gray-800",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-                "class": "p-3",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-                  "class": "flex align-items-center",
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-                    "class": "ml-3",
-                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-                      "class": "",
-                      children: transfer.description
-                    })
-                  })
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("td", {
-                "class": "p-3",
-                children: ["S/. ", transfer.amount]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("td", {
-                "class": "p-3 ",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
-                  href: "#",
-                  "class": "text-gray-400 hover:text-gray-100 mr-2",
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("i", {
-                    "class": "fa-solid fa-pen-to-square"
-                  })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
-                  href: "#",
-                  "class": "text-gray-400 hover:text-gray-100  mx-2",
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("i", {
-                    "class": "fa-solid fa-trash-can"
-                  })
-                })]
-              })]
-            }, transfer.id);
-          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("td", {
+          className: "p-3",
+          children: ["S/. ", transfer.amount]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("td", {
+          className: "p-3 ",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
+            href: "#",
+            className: "text-gray-400 hover:text-gray-100 mr-2",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("i", {
+              className: "fa-solid fa-pen-to-square"
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
+            href: "#",
+            className: "text-gray-400 hover:text-gray-100  mx-2",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("i", {
+              className: "fa-solid fa-trash-can"
+            })
+          })]
         })]
-      })
+      }, index);
     })
   });
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Transfers);
-/* export default class Lists extends Component {
-
-    constructor (props){
-        this.state = {
-            transfers : props
-        }
-    }
-    render(){
-        console.log(this.state.transfers)
-        return (
-            <div>
-                <ul>
-                    <li>11</li>
-                    <li>22</li>
-                    <li>33</li>
-                    <li>44</li>
-                </ul>
-            </div>
-        );
-    }
-} */
 
 /***/ }),
 

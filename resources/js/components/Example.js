@@ -40,8 +40,7 @@ class Example extends Component {
     }
     
     async handleSubmit(e){
-        e.preventDefault();
-         
+        e.preventDefault();         
         console.log('enviando.....');
         if(this.state.form.description !== ''){
             if(this.state.form.amount !== ''){
@@ -54,6 +53,7 @@ class Example extends Component {
                         },
                         body : JSON.stringify(this.state.form),
                     }
+                    console.log(config.body);
                     let res = await fetch(URL+'transfer', config);
                     let data = await res.json();
                     this.setState({
@@ -63,7 +63,8 @@ class Example extends Component {
                     this.setState({
                         form : {
                             description : '',
-                            amount : ''
+                            amount : '',
+                            wallet_id : 1,
                         }
                     })
                     alert('success','Saved correctly')
@@ -98,8 +99,21 @@ class Example extends Component {
                     <Form form={this.state.form} onChange={this.handleChange} onSubmit={this.handleSubmit}/>
                 </div>
                 <div className="px-6 pt-4 pb-2">
-                    <Lists transfers={this.state.transfers} />
-                    
+                    <div className="col-span-12">
+                        <div className="overflow-auto lg:overflow-visible ">
+                            <table className="table text-gray-400 border-separate space-y-6 text-sm">
+                                <thead className="bg-gray-800 text-gray-500">
+                                    <tr>
+                                        <th className="p-3">Description</th>
+                                        <th className="p-3 text-left">Amount</th>
+                                        <th className="p-3 text-left">Action</th>
+                                    </tr>
+                                </thead>
+                                <Lists transfers={this.state.transfers} />          
+                                
+                            </table>
+                        </div>
+                    </div>          
                 </div>
             </div>
         );
